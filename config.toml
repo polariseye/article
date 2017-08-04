@@ -1,0 +1,5 @@
+baseURL = "https://polariseye.github.io/"
+languageCode = "zh-cn"
+title = "polariseye"
+theme = "hugo-bootswatch"
+hasCJKLanguage = "true"

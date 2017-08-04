@@ -1,0 +1,1 @@
+hugo.exe server --theme=hugo-bootswatch --buildDrafts
