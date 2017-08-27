@@ -83,3 +83,15 @@ git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 说明：
 
   如果相关go包下载失败，则可以在[此下载](https://www.golangtc.com/download/package)
+
+# 问题小计
+
+* 环境搭建完成后，使用go build进行编译时，提示，多余的尾部字符
+
+  原因：
+
+  是因为在linux中，每行打行尾部以\n结尾，windows中以\r\n结尾，而在mac中以\r结尾，这导致在linux中进行了错误打识别
+
+  解决办法:
+
+  :set fileformat=unix
