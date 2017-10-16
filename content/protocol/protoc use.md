@@ -20,3 +20,8 @@ protocol buffer教程
 参考文档：
 
 * [Protobuf3语言指南](http://blog.csdn.net/u011518120/article/details/54604615#DefiningAMessageType)
+
+## protocol buffer内部原理
+参考文档:
+
+* [Google Protocol Buffer 的使用和原理](https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/)
