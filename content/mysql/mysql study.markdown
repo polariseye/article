@@ -1,7 +1,7 @@
-mysql ÖØÒªÄÚÈİ½Ì³Ì
+mysql é‡è¦å†…å®¹æ•´ç†
 ---------------------------
-# Êı¾İ±íĞŞ¸Ä
-ÒÔÏÂÊ¾ÀıµÄ±í½á¹¹£º
+# æ•°æ®è¡¨ä¿®æ”¹
+ä»¥ä¸‹ç¤ºä¾‹çš„è¡¨ç»“æ„ï¼š
 ```
 CREATE TABLE `student_info` (         
   `Id` int(11) NOT NULL,              
@@ -10,91 +10,91 @@ CREATE TABLE `student_info` (
    PRIMARY KEY (`Id`)                  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;  
 ```
-* ¸ü¸Ä±íÃû£ºstudent_info ¸ü¸ÄÎªstudent_info2
+* æ›´æ”¹è¡¨åï¼šstudent_info æ›´æ”¹ä¸ºstudent_info2
 ```
 ALTER table student_info RENAME student_info2;
 ```
 
-* ĞŞ¸ÄÊı¾İ¿â×Ö¶ÎÀàĞÍ:Sex¸ü¸ÄÎªbigint
+* ä¿®æ”¹æ•°æ®åº“å­—æ®µç±»å‹:Sexæ›´æ”¹ä¸ºbigint
 ```
 alter table `student_info` modify `Sex` bigint null after `Name`;
 ```
 
-* ×Ö¶ÎÖØÃüÃû£ºSex¸üÃûÎªSex1,²¢°ÑÀàĞÍ¸ü¸ÄÎªbigint
+* å­—æ®µé‡å‘½åï¼šSexæ›´åä¸ºSex1,å¹¶æŠŠç±»å‹æ›´æ”¹ä¸ºbigint
 ```
 ALTER table student_info change Sex Sex1 bigint null AFTER `Name`;
 ```
 
-* Ìí¼Ó×Ö¶Î
+* æ·»åŠ å­—æ®µ
 ```
---Óï·¨
+--è¯­æ³•
 ALTER TABLE tablename ADD [COLUMN] column_definition [FIRST | AFTER col_name]
---Ìí¼ÓÄ¬ÈÏÖµ×Ö¶Î
+--æ·»åŠ é»˜è®¤å€¼å­—æ®µ
 ALTER TABLE User ADD Age INT NOT NULL DEFAULT 0;
----×ÔÔöÖµ
+---è‡ªå¢å€¼
 auto_increment
 ```
 
-* É¾³ı×Ö¶Î
+* åˆ é™¤å­—æ®µ
 ```
 ALTER TABLE tablename DROP [COLUMN] col_name
 ```
 
-* É¾³ı±í
+* åˆ é™¤è¡¨
 ```
 DROP TABLE tablename
 ```
 
-# ±íÊı¾İĞŞ¸Ä
-±í½á¹¹£º
+# è¡¨æ•°æ®ä¿®æ”¹
+è¡¨ç»“æ„ï¼š
 ```
 CREATE TABLE `product` (
-   `proID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ÉÌÆ·±íÖ÷¼ü',
-   `price` decimal(10,2) NOT NULL COMMENT 'ÉÌÆ·¼Û¸ñ',
-   `type` int(11) NOT NULL COMMENT 'ÉÌÆ·Àà±ğ(0ÉúÏÊ,1Ê³Æ·,2Éú»î)',
-   `dtime` datetime NOT NULL COMMENT '´´½¨Ê±¼ä',
+   `proID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'å•†å“è¡¨ä¸»é”®',
+   `price` decimal(10,2) NOT NULL COMMENT 'å•†å“ä»·æ ¼',
+   `type` int(11) NOT NULL COMMENT 'å•†å“ç±»åˆ«(0ç”Ÿé²œ,1é£Ÿå“,2ç”Ÿæ´»)',
+   `dtime` datetime NOT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
    PRIMARY KEY (`proID`)
- ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='ÉÌÆ·±í';
+ ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='å•†å“è¡¨';
 
 CREATE TABLE `producttype` (
-   `ID` int(11) NOT NULL COMMENT 'ÉÌÆ·Àà±ğ(0ÉúÏÊ,1Ê³Æ·,2Éú»î)',
-   `amount` int(11)  COMMENT 'Ã¿ÖÖÀà±ğÉÌÆ·×Ü½ğ¶î',
+   `ID` int(11) NOT NULL COMMENT 'å•†å“ç±»åˆ«(0ç”Ÿé²œ,1é£Ÿå“,2ç”Ÿæ´»)',
+   `amount` int(11)  COMMENT 'æ¯ç§ç±»åˆ«å•†å“æ€»é‡‘é¢',
    UNIQUE KEY (`ID`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ÉÌÆ·Àà±ğ×Ê½ğ»ã×Ü±í'
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='å•†å“ç±»åˆ«èµ„é‡‘æ±‡æ€»è¡¨'
 ```
 
-* Êı¾İ²åÈë
+* æ•°æ®æ’å…¥
 ```
 INSERT INTO product(price,type,dtime) VALUES(10.00,0,now()),(10.00,1,now()),(10.00,1,now()),(20.00,2,now()),(30.00,3,now());
 ```
 
-* µ¥±íÊı¾İ¸üĞÂ
+* å•è¡¨æ•°æ®æ›´æ–°
 ```
 UPDATE product
 SET price='20.00',type=0 
 WHERE proID=2;
 ```
 
-* ¹ØÁª¸üĞÂ
+* å…³è”æ›´æ–°
 ```
 UPDATE producttype,product
 SET producttype.amount=product.price
 where product.TYPE = producttype.ID AND product.TYPE=1;
 ``` 
 
-# ´æ´¢¹ı³ÌºÍº¯Êı
-ÔÚmysqlÀïÃæ£¬º¯ÊıºÍ´æ´¢¹ı³ÌµÄÇø±ğÎª£º
+# å­˜å‚¨è¿‡ç¨‹å’Œå‡½æ•°
+åœ¨mysqlé‡Œé¢ï¼Œå‡½æ•°å’Œå­˜å‚¨è¿‡ç¨‹çš„åŒºåˆ«ä¸ºï¼š
 
-1. Ò»°ãÀ´Ëµ£¬´æ´¢¹ı³ÌÊµÏÖµÄ¹¦ÄÜÒª¸´ÔÓÒ»µã£¬¶øº¯ÊıµÄÊµÏÖµÄ¹¦ÄÜÕë¶ÔĞÔ±È½ÏÇ¿¡£´æ´¢¹ı³Ì£¬¹¦ÄÜÇ¿´ó£¬¿ÉÒÔÖ´ĞĞ°üÀ¨ĞŞ¸Ä±íµÈÒ»ÏµÁĞÊı¾İ¿â²Ù×÷£»ÓÃ»§¶¨Òåº¯Êı²»ÄÜÓÃÓÚÖ´ĞĞÒ»×éĞŞ¸ÄÈ«¾ÖÊı¾İ¿â×´Ì¬µÄ²Ù×÷
+1. ä¸€èˆ¬æ¥è¯´ï¼Œå­˜å‚¨è¿‡ç¨‹å®ç°çš„åŠŸèƒ½è¦å¤æ‚ä¸€ç‚¹ï¼Œè€Œå‡½æ•°çš„å®ç°çš„åŠŸèƒ½é’ˆå¯¹æ€§æ¯”è¾ƒå¼ºã€‚å­˜å‚¨è¿‡ç¨‹ï¼ŒåŠŸèƒ½å¼ºå¤§ï¼Œå¯ä»¥æ‰§è¡ŒåŒ…æ‹¬ä¿®æ”¹è¡¨ç­‰ä¸€ç³»åˆ—æ•°æ®åº“æ“ä½œï¼›ç”¨æˆ·å®šä¹‰å‡½æ•°ä¸èƒ½ç”¨äºæ‰§è¡Œä¸€ç»„ä¿®æ”¹å…¨å±€æ•°æ®åº“çŠ¶æ€çš„æ“ä½œ
 
-2. ¶ÔÓÚ´æ´¢¹ı³ÌÀ´Ëµ¿ÉÒÔ·µ»Ø²ÎÊı£¬Èç¼ÇÂ¼¼¯£¬¶øº¯ÊıÖ»ÄÜ·µ»ØÖµ»òÕß±í¶ÔÏó¡£º¯ÊıÖ»ÄÜ·µ»ØÒ»¸ö±äÁ¿£»¶ø´æ´¢¹ı³Ì¿ÉÒÔ·µ»Ø¶à¸ö¡£´æ´¢¹ı³ÌµÄ²ÎÊı¿ÉÒÔÓĞIN,OUT,INOUTÈıÖÖÀàĞÍ£¬¶øº¯ÊıÖ»ÄÜÓĞINÀà~~´æ´¢¹ı³ÌÉùÃ÷Ê±²»ĞèÒª·µ»ØÀàĞÍ£¬¶øº¯ÊıÉùÃ÷Ê±ĞèÒªÃèÊö·µ»ØÀàĞÍ£¬ÇÒº¯ÊıÌåÖĞ±ØĞë°üº¬Ò»¸öÓĞĞ§µÄRETURNÓï¾ä
+2. å¯¹äºå­˜å‚¨è¿‡ç¨‹æ¥è¯´å¯ä»¥è¿”å›å‚æ•°ï¼Œå¦‚è®°å½•é›†ï¼Œè€Œå‡½æ•°åªèƒ½è¿”å›å€¼æˆ–è€…è¡¨å¯¹è±¡ã€‚å‡½æ•°åªèƒ½è¿”å›ä¸€ä¸ªå˜é‡ï¼›è€Œå­˜å‚¨è¿‡ç¨‹å¯ä»¥è¿”å›å¤šä¸ªã€‚å­˜å‚¨è¿‡ç¨‹çš„å‚æ•°å¯ä»¥æœ‰IN,OUT,INOUTä¸‰ç§ç±»å‹ï¼Œè€Œå‡½æ•°åªèƒ½æœ‰INç±»~~å­˜å‚¨è¿‡ç¨‹å£°æ˜æ—¶ä¸éœ€è¦è¿”å›ç±»å‹ï¼Œè€Œå‡½æ•°å£°æ˜æ—¶éœ€è¦æè¿°è¿”å›ç±»å‹ï¼Œä¸”å‡½æ•°ä½“ä¸­å¿…é¡»åŒ…å«ä¸€ä¸ªæœ‰æ•ˆçš„RETURNè¯­å¥
 
-3. ´æ´¢¹ı³Ì£¬¿ÉÒÔÊ¹ÓÃ·ÇÈ·¶¨º¯Êı£¬²»ÔÊĞíÔÚÓÃ»§¶¨Òåº¯ÊıÖ÷ÌåÖĞÄÚÖÃ·ÇÈ·¶¨º¯Êı
+3. å­˜å‚¨è¿‡ç¨‹ï¼Œå¯ä»¥ä½¿ç”¨éç¡®å®šå‡½æ•°ï¼Œä¸å…è®¸åœ¨ç”¨æˆ·å®šä¹‰å‡½æ•°ä¸»ä½“ä¸­å†…ç½®éç¡®å®šå‡½æ•°
 
-4. ´æ´¢¹ı³ÌÒ»°ãÊÇ×÷ÎªÒ»¸ö¶ÀÁ¢µÄ²¿·ÖÀ´Ö´ĞĞ£¨ EXECUTE Óï¾äÖ´ĞĞ£©£¬¶øº¯Êı¿ÉÒÔ×÷Îª²éÑ¯Óï¾äµÄÒ»¸ö²¿·ÖÀ´µ÷ÓÃ£¨SELECTµ÷ÓÃ£©£¬ÓÉÓÚº¯Êı¿ÉÒÔ·µ»ØÒ»¸ö±í¶ÔÏó£¬Òò´ËËü¿ÉÒÔÔÚ²éÑ¯Óï¾äÖĞÎ»ÓÚFROM¹Ø¼ü×ÖµÄºóÃæ¡£ SQLÓï¾äÖĞ²»¿ÉÓÃ´æ´¢¹ı³Ì£¬¶ø¿ÉÒÔÊ¹ÓÃº¯Êı
+4. å­˜å‚¨è¿‡ç¨‹ä¸€èˆ¬æ˜¯ä½œä¸ºä¸€ä¸ªç‹¬ç«‹çš„éƒ¨åˆ†æ¥æ‰§è¡Œï¼ˆ EXECUTE è¯­å¥æ‰§è¡Œï¼‰ï¼Œè€Œå‡½æ•°å¯ä»¥ä½œä¸ºæŸ¥è¯¢è¯­å¥çš„ä¸€ä¸ªéƒ¨åˆ†æ¥è°ƒç”¨ï¼ˆSELECTè°ƒç”¨ï¼‰ï¼Œç”±äºå‡½æ•°å¯ä»¥è¿”å›ä¸€ä¸ªè¡¨å¯¹è±¡ï¼Œå› æ­¤å®ƒå¯ä»¥åœ¨æŸ¥è¯¢è¯­å¥ä¸­ä½äºFROMå…³é”®å­—çš„åé¢ã€‚ SQLè¯­å¥ä¸­ä¸å¯ç”¨å­˜å‚¨è¿‡ç¨‹ï¼Œè€Œå¯ä»¥ä½¿ç”¨å‡½æ•°
 
-## ´´½¨´æ´¢¹ı³Ì
-¹Ù·½Óï·¨ÈçÏÂ£º
+## åˆ›å»ºå­˜å‚¨è¿‡ç¨‹æˆ–å‡½æ•°
+å®˜æ–¹è¯­æ³•å¦‚ä¸‹ï¼š
 ```
 CREATE PROCEDURE sp_name ([proc_parameter[,...]])
     [characteristic ...] routine_body
@@ -103,11 +103,11 @@ CREATE FUNCTION sp_name ([func_parameter[,...]])
     RETURNS type
     [characteristic ...] routine_body
     
-    proc_parameter:
-    [ IN | OUT | INOUT ] param_name type
-    
-    func_parameter:
-    param_name type
+proc_parameter:
+[ IN | OUT | INOUT ] param_name type
+
+func_parameter:
+param_name type
  
 type:
     Any valid MySQL data type
@@ -122,21 +122,21 @@ characteristic:
 routine_body:
     Valid SQL procedure statement or statements
 ```
-ËµÃ÷£º
+è¯´æ˜ï¼š
 
-1. **LANGUAGE SQL**£ºÓÃÀ´ËµÃ÷Óï¾ä²¿·ÖÊÇSQLÓï¾ä£¬Î´À´¿ÉÄÜ»áÖ§³ÖÆäËüÀàĞÍµÄÓï¾ä
-2. **[NOT] DETERMINISTIC**£ºÈç¹û³ÌĞò»òÏß³Ì×ÜÊÇ¶ÔÍ¬ÑùµÄÊäÈë²ÎÊı²úÉúÍ¬ÑùµÄ½á¹û£¬Ôò±»ÈÏÎªËüÊÇ¡°È·¶¨µÄ¡±£¬·ñÔò¾ÍÊÇ¡°·ÇÈ·¶¨¡±µÄ¡£Èç¹û¼ÈÃ»ÓĞ¸ø¶¨DETERMINISTICÒ²Ã»ÓĞ¸ø¶¨NOT DETERMINISTIC£¬Ä¬ÈÏµÄ¾ÍÊÇNOT DETERMINISTIC£¨·ÇÈ·¶¨µÄ£©
-3. **CONTAINS SQL**£º±íÊ¾×Ó³ÌĞò²»°üº¬¶Á»òĞ´Êı¾İµÄÓï¾ä¡£
-4. **NO SQL**£º±íÊ¾×Ó³ÌĞò²»°üº¬SQLÓï¾ä
-5. **READS SQL DATA**£º±íÊ¾×Ó³ÌĞò°üº¬¶ÁÊı¾İµÄÓï¾ä£¬µ«²»°üº¬Ğ´Êı¾İµÄÓï¾ä
-6. **MODIFIES SQL DATA**£º±íÊ¾×Ó³ÌĞò°üº¬Ğ´Êı¾İµÄÓï¾ä
-7. **SQL SECURITY DEFINER**£º±íÊ¾Ö´ĞĞ´æ´¢¹ı³ÌÖĞµÄ³ÌĞòÊÇÓÉ´´½¨¸Ã´æ´¢¹ı³ÌµÄÓÃ»§µÄÈ¨ÏŞÀ´Ö´ĞĞ
-8. **SQL SECURITY INVOKER**£º±íÊ¾Ö´ĞĞ´æ´¢¹ı³ÌÖĞµÄ³ÌĞòÊÇÓÉµ÷ÓÃ¸Ã´æ´¢¹ı³ÌµÄÓÃ»§µÄÈ¨ÏŞÀ´Ö´ĞĞ¡££¨ÀıÈçÉÏÃæµÄ´æ´¢¹ı³ÌÎÒĞ´µÄÊÇÓÉµ÷ÓÃ¸Ã´æ´¢¹ı³ÌµÄÓÃ»§µÄÈ¨ÏŞÀ´Ö´ĞĞ£¬µ±Ç°´æ´¢¹ı³ÌÊÇÓÃÀ´²éÑ¯Employee±í£¬Èç¹ûÎÒµ±Ç°Ö´ĞĞ´æ´¢¹ı³ÌµÄÓÃ»§Ã»ÓĞ²éÑ¯Employee±íµÄÈ¨ÏŞÄÇÃ´¾Í»á·µ»ØÈ¨ÏŞ²»×ãµÄ´íÎó£¬Èç¹û»»³ÉDEFINERÈç¹û´æ´¢¹ı³ÌÊÇÓÉROOTÓÃ»§´´½¨ÄÇÃ´ÈÎºÎÒ»¸öÓÃ»§µÇÈëµ÷ÓÃ´æ´¢¹ı³Ì¶¼¿ÉÒÔÖ´ĞĞ£¬ÒòÎªÖ´ĞĞ´æ´¢¹ı³ÌµÄÈ¨ÏŞ±ä³ÉÁËroot£©
-9. **COMMENT 'string'**:±¸×¢£¬ºÍ´´½¨±íµÄ×Ö¶Î±¸×¢Ò»Ñù
+1. **LANGUAGE SQL**ï¼šç”¨æ¥è¯´æ˜è¯­å¥éƒ¨åˆ†æ˜¯SQLè¯­å¥ï¼Œæœªæ¥å¯èƒ½ä¼šæ”¯æŒå…¶å®ƒç±»å‹çš„è¯­å¥
+2. **[NOT] DETERMINISTIC**ï¼šå¦‚æœç¨‹åºæˆ–çº¿ç¨‹æ€»æ˜¯å¯¹åŒæ ·çš„è¾“å…¥å‚æ•°äº§ç”ŸåŒæ ·çš„ç»“æœï¼Œåˆ™è¢«è®¤ä¸ºå®ƒæ˜¯â€œç¡®å®šçš„â€ï¼Œå¦åˆ™å°±æ˜¯â€œéç¡®å®šâ€çš„ã€‚å¦‚æœæ—¢æ²¡æœ‰ç»™å®šDETERMINISTICä¹Ÿæ²¡æœ‰ç»™å®šNOT DETERMINISTICï¼Œé»˜è®¤çš„å°±æ˜¯NOT DETERMINISTICï¼ˆéç¡®å®šçš„ï¼‰
+3. **CONTAINS SQL**ï¼šè¡¨ç¤ºå­ç¨‹åºä¸åŒ…å«è¯»æˆ–å†™æ•°æ®çš„è¯­å¥ã€‚
+4. **NO SQL**ï¼šè¡¨ç¤ºå­ç¨‹åºä¸åŒ…å«SQLè¯­å¥
+5. **READS SQL DATA**ï¼šè¡¨ç¤ºå­ç¨‹åºåŒ…å«è¯»æ•°æ®çš„è¯­å¥ï¼Œä½†ä¸åŒ…å«å†™æ•°æ®çš„è¯­å¥
+6. **MODIFIES SQL DATA**ï¼šè¡¨ç¤ºå­ç¨‹åºåŒ…å«å†™æ•°æ®çš„è¯­å¥
+7. **SQL SECURITY DEFINER**ï¼šè¡¨ç¤ºæ‰§è¡Œå­˜å‚¨è¿‡ç¨‹ä¸­çš„ç¨‹åºæ˜¯ç”±åˆ›å»ºè¯¥å­˜å‚¨è¿‡ç¨‹çš„ç”¨æˆ·çš„æƒé™æ¥æ‰§è¡Œ
+8. **SQL SECURITY INVOKER**ï¼šè¡¨ç¤ºæ‰§è¡Œå­˜å‚¨è¿‡ç¨‹ä¸­çš„ç¨‹åºæ˜¯ç”±è°ƒç”¨è¯¥å­˜å‚¨è¿‡ç¨‹çš„ç”¨æˆ·çš„æƒé™æ¥æ‰§è¡Œã€‚ï¼ˆä¾‹å¦‚ä¸Šé¢çš„å­˜å‚¨è¿‡ç¨‹æˆ‘å†™çš„æ˜¯ç”±è°ƒç”¨è¯¥å­˜å‚¨è¿‡ç¨‹çš„ç”¨æˆ·çš„æƒé™æ¥æ‰§è¡Œï¼Œå½“å‰å­˜å‚¨è¿‡ç¨‹æ˜¯ç”¨æ¥æŸ¥è¯¢Employeeè¡¨ï¼Œå¦‚æœæˆ‘å½“å‰æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹çš„ç”¨æˆ·æ²¡æœ‰æŸ¥è¯¢Employeeè¡¨çš„æƒé™é‚£ä¹ˆå°±ä¼šè¿”å›æƒé™ä¸è¶³çš„é”™è¯¯ï¼Œå¦‚æœæ¢æˆDEFINERå¦‚æœå­˜å‚¨è¿‡ç¨‹æ˜¯ç”±ROOTç”¨æˆ·åˆ›å»ºé‚£ä¹ˆä»»ä½•ä¸€ä¸ªç”¨æˆ·ç™»å…¥è°ƒç”¨å­˜å‚¨è¿‡ç¨‹éƒ½å¯ä»¥æ‰§è¡Œï¼Œå› ä¸ºæ‰§è¡Œå­˜å‚¨è¿‡ç¨‹çš„æƒé™å˜æˆäº†rootï¼‰
+9. **COMMENT 'string'**:å¤‡æ³¨ï¼Œå’Œåˆ›å»ºè¡¨çš„å­—æ®µå¤‡æ³¨ä¸€æ ·
 
-Ê¾Àı´úÂë
+ç¤ºä¾‹ä»£ç 
 ```
-#´´½¨Êı¾İ¿â
+#åˆ›å»ºæ•°æ®åº“
 DROP DATABASE IF EXISTS Dpro;
 CREATE  DATABASE Dpro
 CHARACTER SET utf8
@@ -144,18 +144,18 @@ CHARACTER SET utf8
 
 USE Dpro;
 
-#´´½¨²¿ÃÅ±í
+#åˆ›å»ºéƒ¨é—¨è¡¨
 DROP TABLE IF EXISTS Employee;
 CREATE TABLE Employee
-(id INT NOT NULL PRIMARY KEY COMMENT 'Ö÷¼ü',
- name VARCHAR(20) NOT NULL COMMENT 'ÈËÃû',
- depid INT NOT NULL COMMENT '²¿ÃÅid'
+(id INT NOT NULL PRIMARY KEY COMMENT 'ä¸»é”®',
+ name VARCHAR(20) NOT NULL COMMENT 'äººå',
+ depid INT NOT NULL COMMENT 'éƒ¨é—¨id'
 );
 
-#²åÈë²âÊÔÊı¾İ
-INSERT INTO Employee(id,name,depid) VALUES(1,'³Â',100),(2,'Íõ',101),(3,'ÕÅ',101),(4,'Àî',102),(5,'¹ù',103);
+#æ’å…¥æµ‹è¯•æ•°æ®
+INSERT INTO Employee(id,name,depid) VALUES(1,'é™ˆ',100),(2,'ç‹',101),(3,'å¼ ',101),(4,'æ',102),(5,'éƒ­',103);
 
-#´´½¨´æ´¢¹ı³Ì
+#åˆ›å»ºå­˜å‚¨è¿‡ç¨‹
 DROP PROCEDURE IF EXISTS Pro_Employee;
 DELIMITER $$
 CREATE PROCEDURE Pro_Employee(IN pdepid VARCHAR(20),OUT pcount INT )
@@ -167,41 +167,45 @@ SELECT COUNT(id) INTO pcount FROM Employee WHERE depid=pdepid;
 END$$
 DELIMITER ;
 
-#Ö´ĞĞ´æ´¢¹ı³Ì
+#æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹
 CALL Pro_Employee(101,@pcount);
 
 SELECT @pcount;
 ```
 
-ËµÃ÷£º
+è¯´æ˜ï¼š
 
-1. ÔÚ´´½¨´æ´¢¹ı³ÌµÄÊ±ºòÒ»°ã¶¼»áÓÃ**DELIMITER$$.....END$$ DELIMITER ;**·ÅÔÚ¿ªÍ·ºÍ½áÊø£¬Ä¿µÄ¾ÍÊÇ±ÜÃâmysql°Ñ´æ´¢¹ı³ÌÄÚ²¿µÄ";"½âÊÍ³É½áÊø·ûºÅ£¬×îºóÍ¨¹ı¡°DELIMITER ;¡±À´¸æÖª´æ´¢¹ı³Ì½áÊø¡£
+1. åœ¨åˆ›å»ºå­˜å‚¨è¿‡ç¨‹çš„æ—¶å€™ä¸€èˆ¬éƒ½ä¼šç”¨**DELIMITER$$.....END$$ DELIMITER ;**æ”¾åœ¨å¼€å¤´å’Œç»“æŸï¼Œç›®çš„å°±æ˜¯é¿å…mysqlæŠŠå­˜å‚¨è¿‡ç¨‹å†…éƒ¨çš„";"è§£é‡Šæˆç»“æŸç¬¦å·ï¼Œæœ€åé€šè¿‡â€œDELIMITER ;â€æ¥å‘ŠçŸ¥å­˜å‚¨è¿‡ç¨‹ç»“æŸã€‚
 
-# ±äÁ¿
-## declare¶¨Òå±äÁ¿
+# å˜é‡
+## declareå®šä¹‰å˜é‡
 ```
 DECLARE var_name[,...] type [DEFAULT value]
 ```
-ÔÚ´æ´¢¹ı³ÌºÍº¯ÊıÖĞÍ¨¹ıdeclare¶¨Òå±äÁ¿ÔÚBEGIN...ENDÖĞ£¬ÇÒÔÚÓï¾äÖ®Ç°¡£²¢ÇÒ¿ÉÒÔÍ¨¹ıÖØ¸´¶¨Òå¶à¸ö±äÁ¿¡£**declare¶¨ÒåµÄ±äÁ¿Ãû²»ÄÜ´ø¡®@¡¯·ûºÅ**
+åœ¨å­˜å‚¨è¿‡ç¨‹å’Œå‡½æ•°ä¸­é€šè¿‡declareå®šä¹‰å˜é‡åœ¨BEGIN...ENDä¸­ï¼Œä¸”åœ¨è¯­å¥ä¹‹å‰ã€‚å¹¶ä¸”å¯ä»¥é€šè¿‡é‡å¤å®šä¹‰å¤šä¸ªå˜é‡ã€‚**declareå®šä¹‰çš„å˜é‡åä¸èƒ½å¸¦â€˜@â€™ç¬¦å·**
 
-## set¶¨Òå»ò¸³Öµ±äÁ¿
-SET³ıÁË¿ÉÒÔ¸øÒÑ¾­¶¨ÒåºÃµÄ±äÁ¿¸³ÖµÍâ£¬»¹¿ÉÒÔÖ¸¶¨¸³Öµ²¢¶¨ÒåĞÂ±äÁ¿£¬ÇÒSET¶¨ÒåµÄ±äÁ¿Ãû¿ÉÒÔ´ø¡®@¡¯·ûºÅ£¬SETÓï¾äµÄÎ»ÖÃÒ²ÊÇÔÚBEGIN ....ENDÖ®¼äµÄÓï¾äÖ®Ç°
+## setå®šä¹‰æˆ–èµ‹å€¼å˜é‡
+SETé™¤äº†å¯ä»¥ç»™å·²ç»å®šä¹‰å¥½çš„å˜é‡èµ‹å€¼å¤–ï¼Œè¿˜å¯ä»¥æŒ‡å®šèµ‹å€¼å¹¶å®šä¹‰æ–°å˜é‡ï¼Œä¸”SETå®šä¹‰çš„å˜é‡åå¯ä»¥å¸¦â€˜@â€™ç¬¦å·ï¼ŒSETè¯­å¥çš„ä½ç½®ä¹Ÿæ˜¯åœ¨BEGIN ....ENDä¹‹é—´çš„è¯­å¥ä¹‹å‰
 
-¸³Öµ±äÁ¿:
+èµ‹å€¼å˜é‡:
 ```
 SET var_name = expr [, var_name = expr] ...
 ```
-¶¨Òå²¢¸³Öµ±äÁ¿
+å®šä¹‰å¹¶èµ‹å€¼å˜é‡
 ```
 SET @var_name = expr [, @var_name = expr] ...
 ```
-## SELECT ... INTOÓï¾ä¸³Öµ±äÁ¿
- Í¨¹ıselect intoÓï¾ä¿ÉÒÔ½«Öµ¸³Óè±äÁ¿£¬Ò²¿ÉÒÔÖ®¼ä½«¸ÃÖµ¸³Öµ´æ´¢¹ı³ÌµÄout²ÎÊı,ÉÏÃæµÄ´æ´¢¹ı³Ìselect into¾ÍÊÇÖ®¼ä½«Öµ¸³Óèout²ÎÊı¡£
+## SELECT ... INTOè¯­å¥èµ‹å€¼å˜é‡
+ é€šè¿‡select intoè¯­å¥å¯ä»¥å°†å€¼èµ‹äºˆå˜é‡ï¼Œä¹Ÿå¯ä»¥ä¹‹é—´å°†è¯¥å€¼èµ‹å€¼å­˜å‚¨è¿‡ç¨‹çš„outå‚æ•°,ä¸Šé¢çš„å­˜å‚¨è¿‡ç¨‹select intoå°±æ˜¯ä¹‹é—´å°†å€¼èµ‹äºˆoutå‚æ•°ã€‚
 
-## Ìõ¼ş
-Ìõ¼şµÄ×÷ÓÃÒ»°ãÓÃÔÚ¶ÔÖ¸¶¨Ìõ¼şµÄ´¦Àí£¬±ÈÈçÎÒÃÇÓöµ½Ö÷¼üÖØ¸´±¨´íºó¸ÃÔõÑù´¦Àí¡£ 
-### ¶¨ÒåÌõ¼ş
- ¶¨ÒåÌõ¼ş¾ÍÊÇÊÂÏÈ¶¨ÒåÄ³ÖÖ´íÎó×´Ì¬»òÕßsql×´Ì¬µÄÃû³Æ£¬È»ºó¾Í¿ÉÒÔÒıÓÃ¸ÃÌõ¼şÃû³Æ¿ª×öÌõ¼ş´¦Àí£¬¶¨ÒåÌõ¼şÒ»°ãÓÃµÄ±È½ÏÉÙ£¬Ò»°ã»áÖ±½Ó·ÅÔÚÌõ¼ş´¦ÀíÀïÃæ¡£
+## å˜é‡æ³¨æ„äº‹é¡¹
+1. éå†ä¸åŒºåˆ†å¤§å°äº›
+2. å˜é‡çš„å®šä¹‰å¿…é¡»å†™åœ¨å¤åˆè¯­å¥çš„å¼€å¤´ï¼Œå¹¶ä¸”åœ¨ä»»ä½•å…¶ä»–è¯­å¥çš„å‰é¢
+
+## æ¡ä»¶
+æ¡ä»¶çš„ä½œç”¨ä¸€èˆ¬ç”¨åœ¨å¯¹æŒ‡å®šæ¡ä»¶çš„å¤„ç†ï¼Œæ¯”å¦‚æˆ‘ä»¬é‡åˆ°ä¸»é”®é‡å¤æŠ¥é”™åè¯¥æ€æ ·å¤„ç†ã€‚ 
+### æ¡ä»¶çš„å®šä¹‰
+ å®šä¹‰æ¡ä»¶å°±æ˜¯äº‹å…ˆå®šä¹‰æŸç§é”™è¯¯çŠ¶æ€æˆ–è€…sqlçŠ¶æ€çš„åç§°ï¼Œç„¶åå°±å¯ä»¥å¼•ç”¨è¯¥æ¡ä»¶åç§°å¼€åšæ¡ä»¶å¤„ç†ï¼Œå®šä¹‰æ¡ä»¶ä¸€èˆ¬ç”¨çš„æ¯”è¾ƒå°‘ï¼Œä¸€èˆ¬ä¼šç›´æ¥æ”¾åœ¨æ¡ä»¶å¤„ç†é‡Œé¢ã€‚
 
 ```
 DECLARE condition_name CONDITION FOR condition_value
@@ -210,8 +214,181 @@ condition_value:
     SQLSTATE [VALUE] sqlstate_value
   | mysql_error_code
 ```
+###  æ¡ä»¶çš„å¤„ç†
+```
+DECLARE handler_type HANDLER FOR condition_value[,...] sp_statement
+handler_type:
+    CONTINUE
+    | EXIT
+    | UNDO
+condition_value:
+    SQLSTATE [VALUE] sqlstate_value
+| condition_name
+| SQLWARNING
+| NOT FOUND
+| SQLEXCEPTION
+| mysql_error_code
+```
+å¤„ç†ç¤ºä¾‹ï¼š
+```
+delimiter $$
+CREATE PROCEDURE actor_insert ()
+BEGIN
+    DECLARE CONTINUE HANDLER FOR SQLSTATE '23000' SET @x2 = 1;
+    SET @x = 1;
+    INSERT INTO actor(actor_id,first_name,last_name) VALUES(201,'Test','201');
+    SET @x = 2;
+    INSERT INTO actor(actor_id,first_name,last_name) VALUES (1,'Test','1');
+    SET @x = 3;
+END;
+$$
+```
 
-# ÒıÓÃ×ÊÁÏ
-1. [Mysql´æ´¢¹ı³ÌºÍº¯ÊıÇø±ğ½éÉÜ](http://www.jb51.net/article/48317.htm)
-2. [MySQL ´æ´¢¹ı³ÌºÍº¯Êı](http://www.cnblogs.com/chenmh/p/5201473.html)
-3. [MySQL ³£ÓÃµÄUPDATE²Ù×÷](http://www.cnblogs.com/chenmh/p/5013606.html)
+è¯´æ˜:
+
+1. handler_type ç°åœ¨è¿˜åªæ”¯æŒ CONTINUE å’Œ EXIT ä¸¤ç§,CONTINUE è¡¨ç¤ºç»§ç»­æ‰§è¡Œä¸‹é¢çš„è¯­å¥ï¼Œ
+EXIT åˆ™è¡¨ç¤ºæ‰§è¡Œç»ˆæ­¢
+2. condition_value çš„å€¼å¯ä»¥æ˜¯é€šè¿‡ DECLARE å®šä¹‰çš„ condition_nameï¼Œå¯ä»¥æ˜¯ SQLSTATE çš„å€¼æˆ–
+è€… mysql-error-code çš„å€¼æˆ–è€… SQLWARNINGã€NOT FOUNDã€SQLEXCEPTIONï¼Œè¿™ 3 ä¸ªå€¼æ˜¯ 3 ç§
+å®šä¹‰å¥½çš„é”™è¯¯ç±»åˆ«ï¼Œåˆ†åˆ«ä»£è¡¨ä¸åŒçš„å«ä¹‰
+
+# æ¸¸æ ‡
+åœ¨å­˜å‚¨è¿‡ç¨‹å’Œå‡½æ•°ä¸­å¯ä»¥ä½¿ç”¨å…‰æ ‡å¯¹ç»“æœé›†è¿›è¡Œå¾ªç¯çš„å¤„ç†ã€‚å…‰æ ‡çš„ä½¿ç”¨åŒ…æ‹¬å…‰æ ‡çš„å£°æ˜ã€OPENã€FETCH å’Œ CLOSEã€‚
+
+å£°æ˜æ¸¸æ ‡:
+```
+DECLARE cursor_name CURSOR FOR select_statement
+```
+æ‰“å¼€æ¸¸æ ‡:
+```
+OPEN cursor_name
+```
+Fetchæ¸¸æ ‡:
+```
+FETCH cursor_name INTO var_name [, var_name] ...
+```
+Closeæ¸¸æ ‡:
+```
+CLOSE cursor_name
+```
+
+ç¤ºä¾‹ä»£ç :
+```
+mysql> delimiter $$
+mysql>
+mysql> CREATE PROCEDURE payment_stat ()
+-> BEGIN
+-> DECLARE i_staff_id int;
+-> DECLARE d_amount decimal(5,2);
+-> DECLARE cur_payment cursor for select staff_id,amount from payment;
+-> DECLARE EXIT HANDLER FOR NOT FOUND CLOSE cur_payment;
+->
+-> set @x1 = 0;
+-> set @x2 = 0;
+->
+-> OPEN cur_payment;
+->
+-> REPEAT
+-> FETCH cur_payment INTO i_staff_id, d_amount;
+-> if i_staff_id = 2 then
+-> set @x1 = @x1 + d_amount;
+-> else
+-> set @x2 = @x2 + d_amount;
+-> end if;
+-> UNTIL 0 END REPEAT;
+->
+-> CLOSE cur_payment;
+->
+-> END;
+-> $$
+Query OK, 0 rows affected (0.00 sec)
+mysql> delimiter ;
+```
+
+æ³¨æ„äº‹é¡¹:
+* **å˜é‡ã€æ¡ä»¶ã€å¤„ç†ç¨‹åºã€å…‰æ ‡éƒ½æ˜¯é€šè¿‡ DECLARE å®šä¹‰çš„ï¼Œå®ƒä»¬ä¹‹é—´æ˜¯æœ‰å…ˆåé¡ºåºçš„è¦
+æ±‚çš„ã€‚å˜é‡å’Œæ¡ä»¶å¿…é¡»åœ¨æœ€å‰é¢å£°æ˜ï¼Œç„¶åæ‰èƒ½æ˜¯å…‰æ ‡çš„å£°æ˜ï¼Œæœ€åæ‰å¯ä»¥æ˜¯å¤„ç†ç¨‹åº
+çš„å£°æ˜**
+
+# ifè¯­å¥
+```
+IF search_condition THEN statement_list
+    [ELSEIF search_condition THEN statement_list] ...
+    [ELSE statement_list]
+END IF
+```
+# caseè¯­å¥
+```
+CASE case_value
+    WHEN when_value THEN statement_list
+    [WHEN when_value THEN statement_list] ...
+    [ELSE statement_list]
+END CASE
+Or:
+CASE
+    WHEN search_condition THEN statement_list
+    [WHEN search_condition THEN statement_list] ...
+    [ELSE statement_list]
+END CASE
+```
+# loopè¯­å¥
+```
+[begin_label:] LOOP
+    statement_list
+END LOOP [end_label]
+```
+è¿™ä¸ªé€šå¸¸éœ€è¦Leaveè¯­å¥å®ç°é€€å‡ºå¾ªç¯
+
+# leaveè¯­å¥ï¼Œç”¨äºè·³å‡ºå¾ªç¯
+```
+mysql> CREATE PROCEDURE actor_insert ()
+-> BEGIN
+-> set @x = 0;
+-> ins: LOOP
+-> set @x = @x + 1;
+-> IF @x = 100 then
+-> leave ins;
+-> END IF;
+-> INSERT INTO actor(first_name,last_name) VALUES ('Test','201');
+-> END LOOP ins;
+-> END;
+-> $$
+```
+# ITERATE è¯­å¥ï¼Œç›¸å½“äºCè¯­è¨€çš„continue
+ITERATE è¯­å¥å¿…é¡»ç”¨åœ¨å¾ªç¯ä¸­ï¼Œä½œç”¨æ˜¯è·³è¿‡å½“å‰å¾ªç¯çš„å‰©ä¸‹çš„è¯­å¥ï¼Œç›´æ¥è¿›å…¥ä¸‹ä¸€è½®å¾ªç¯
+```
+mysql> CREATE PROCEDURE actor_insert ()
+-> BEGIN
+-> set @x = 0;
+-> ins: LOOP
+-> set @x = @x + 1;
+-> IF @x = 10 then
+-> leave ins;
+-> ELSEIF mod(@x,2) = 0 then
+-> ITERATE ins;
+-> END IF;
+-> INSERT INTO actor(actor_id,first_name,last_name) VALUES (@x+200,'Test',@x);
+-> END LOOP ins;
+-> END;
+-> $$
+```
+# REPEAT è¯­å¥,ç›¸å½“äºCè¯­è¨€çš„do while
+æœ‰æ¡ä»¶çš„å¾ªç¯æ§åˆ¶è¯­å¥ï¼Œå½“æ»¡è¶³æ¡ä»¶çš„æ—¶å€™é€€å‡ºå¾ªç¯
+```
+[begin_label:] REPEAT
+    statement_list
+UNTIL search_condition
+END REPEAT [end_label]
+```
+#  WHILE è¯­å¥
+```
+[begin_label:] WHILE search_condition DO
+    statement_list
+END WHILE [end_label]
+```
+
+# å¼•ç”¨èµ„æ–™
+1. [Mysqlå­˜å‚¨è¿‡ç¨‹å’Œå‡½æ•°åŒºåˆ«ä»‹ç»](http://www.jb51.net/article/48317.htm)
+2. [MySQL å­˜å‚¨è¿‡ç¨‹å’Œå‡½æ•°](http://www.cnblogs.com/chenmh/p/5201473.html)
+3. [MySQL å¸¸ç”¨çš„UPDATEæ“ä½œ](http://www.cnblogs.com/chenmh/p/5013606.html)
+4. [æ·±å…¥æµ…å‡ºMysql]()
