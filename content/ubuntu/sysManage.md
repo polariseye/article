@@ -57,3 +57,52 @@ draft: true
 * 格式：disown -h job名
 
   使某个正在运行打作业忽略HUP信号
+  
+# 磁盘管理
+1. 列出当前系统中所有已挂载文件系统的类型：
+```
+sudo blkid
+```
+
+2. 显示指定设备 UUID：
+```
+sudo blkid -s UUID /dev/sda5
+```
+
+3. 显示所有设备 UUID：
+```
+sudo blkid -s UUID
+```
+
+4. 显示指定设备 LABEL：
+```
+sudo blkid -s LABEL /dev/sda5
+```
+
+5. 显示所有设备 LABEL：
+```
+sudo blkid -s LABEL
+```
+
+6. 显示所有设备文件系统：
+```
+sudo blkid -s TYPE
+```
+
+7. 显示所有设备：
+```
+sudo blkid -o device
+````
+
+8. 以列表方式查看详细信息：
+```
+sudo blkid -o list
+```
+
+9. 查看当前磁盘情况
+```
+fdisk -l
+```
+
+详细参见资料:
+* [linux 磁盘挂载及查看磁盘](https://www.cnblogs.com/mangoVic/p/7161548.html)
