@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gorm</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* Solarized (Dark) */
+/* Authors: Ethan Schoonover: http://ethanschoonover.com/solarized, CodeCatalyst: http://codecatalyst.com/ */
+/* Version: d9a83f4e7a47432baff86e1e7946d9e066cf3d1b (modified) */
+/* https://github.com/CodeCatalyst/mou-theme-solarized */
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+ol,
+ul,
+li,
+img {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+html * {
+  font-family: "ff-din-web-pro-1", "ff-din-web-pro-2", sans-serif;
+  font-size: 16px;
+  line-height: 19.2px;
+  color-profile: sRGB;
+}
+body {
+  min-width: 32em;
+  max-width: 52em;
+  margin: 10px;
+}
+p {
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+strong {
+  font-weight: bold;
+}
+ol,
+ul {
+  margin-left: 2em;
+  margin-bottom: 20px;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 10px;
+}
+li {
+  margin-bottom: 10px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: lighter;
+  text-transform: capitalize;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 24.624px;
+  line-height: 29.548799999999996px;
+}
+h2 {
+  font-size: 24.624px;
+  line-height: 29.548799999999996px;
+}
+h3 {
+  font-size: 23.44px;
+  line-height: 28.128px;
+}
+h4 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+h5 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+h6 {
+  font-size: 22.16px;
+  line-height: 26.592px;
+}
+img {
+  margin-bottom: 20px;
+}
+h1 img,
+h2 img,
+h3 img,
+h4 img,
+h5 img,
+h6 img,
+p img {
+  margin-bottom: 0;
+}
+pre {
+  margin-bottom: 20px;
+}
+pre,
+code {
+  font-family: monospace;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 15px;
+}
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid;
+}
+h2 {
+  border-bottom: 1px solid;
+}
+h3,
+h4,
+h5,
+h6 {
+  border-bottom: none;
+}
+html * {
+  color: #839496;
+}
+html body {
+  background-color: #002b36;
+}
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  color: #93a1a1;
+  border-color: #839496;
+}
+html a,
+html a:active,
+html a:visited {
+  color: #93a1a1;
+}
+html a:hover {
+  background-color: #073642;
+}
+html pre {
+  color: #93a1a1;
+  background-color: #073642;
+}
+html a,
+html a:active,
+html a:visited,
+html code.url {
+  color: #b58900;
+}
+html h1 {
+  color: #b58900;
+}
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  color: #b58900;
+}
+
+/*
+LICENSE
+
+Solarized Theme for Mou
+
+Copyright (c) 2012 CodeCatalyst, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Solarized
+
+Copyright (c) 2011 Ethan Schoonover
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+</style>
+</head>
+<body>
+<p><a href="https://jasperxu.github.io/gorm-zh/">gorm</a></p>
+<hr />
+<h1>简介</h1>
+<p>项目地址：<a href="https://github.com/jinzhu/gorm">点这里</a></p>
+<ul>
+<li>全功能ORM（几乎）</li>
+<li>关联（包含一个，包含多个，属于，多对多，多种包含）</li>
+<li>Callbacks（创建/保存/更新/删除/查找之前/之后）</li>
+<li>预加载（急加载）</li>
+<li>事务</li>
+<li>复合主键</li>
+<li>SQL Builder</li>
+<li>自动迁移</li>
+<li>日志</li>
+<li>可扩展，编写基于GORM回调的插件</li>
+<li>每个功能都有测试</li>
+<li>开发人员友好</li>
+</ul>
+<h2>模型定义</h2>
+<pre><code>type UserInfo struct {
+    UserId int    `gorm:&quot;primary_key;column:UserId&quot;`
+    Name   string `gorm:&quot;column:Name&quot;`
+    Sex    byte   `gorm:&quot;column:Sex&quot;`
+}
+</code></pre>
+
+<p>说明:</p>
+<ol>
+<li>使用primary_key指定int为主键会默认认为是自增主键</li>
+<li>字段映射采用的是蛇形映射规则，UserId会被映射为user_id，如果不强制指定，则会映射到不存在的字段</li>
+</ol>
+<h2>初始化</h2>
+<p>首先需要全局初始化，用于注册表名映射函数，比如添加表名前缀后缀</p>
+<pre><code>// 初始化
+func init() {
+
+    // 调整表名
+    gorm.DefaultTableNameHandler = func(db *gorm.DB, tableName string) string {
+        return &quot;p_&quot; + tableName
+    }
+}
+</code></pre>
+
+<p>然后初始化数据库连接信息</p>
+<pre><code>func initDb() *gorm.DB {
+    db, err := gorm.Open(&quot;mysql&quot;, &quot;root:1234@tcp(127.0.0.1:3306)/operation_i_dzz?charset=utf8&amp;parseTime=True&amp;loc=Local&quot;)
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+
+    // 记录日志到标准输出
+    db.LogMode(true)
+    db.SetLogger(log.New(os.Stdout, &quot;\r\n&quot;, 0))
+
+    // 设置连接池信息（通过sql.Db设置）
+    db.DB().SetMaxOpenConns(100)
+
+    // 不使用表名的复数形式。如果为false，结构体名为User，则数据库的表名会被改为users
+    db.SingularTable(true)
+
+    return db
+}
+</code></pre>
+
+<p>说明：</p>
+<ol>
+<li>由于是注册的是全局表名调整，所以无法分别为每个连接设置表名调整函数</li>
+<li>默认表名映射为struct的复数形式，这个太强制了，应该首先考虑的是常规映射</li>
+</ol>
+<h2>查询</h2>
+<pre><code>var data []*UserInfo
+result := db.Where(&quot;Name like '%name%'&quot;).  //// 指定查询条件
+            Select(&quot;UserId,Name,Sex&quot;).     //// 指定筛选字段
+            Order(&quot;UserId ASC,Name DESC&quot;). //// 指定排序规则
+            Limit(10).                     //// 指定limit部分
+            Find(&amp;data)                    //// 查询集合
+if result.Error != nil {
+    fmt.Println(&quot;select异常，错误信息:&quot;, result.Error.Error())
+    return
+}
+
+if result.RowsAffected &lt;= 0 {
+    fmt.Println(&quot;select成功，但未影响任何行&quot;)
+} else {
+    fmt.Println(&quot;select成功，影响记录数:&quot;, result.RowsAffected)
+}
+
+for _, item := range data {
+    fmt.Println(&quot;userid=&quot;, item.UserId, &quot;   Name=&quot;, item.Name, &quot;    Sex=&quot;, item.Sex)
+}
+</code></pre>
+
+<p>说明：</p>
+<ol>
+<li>使用Find查询集合，First、Last查询指定的一条数据</li>
+<li>字段名映射存在大小写区分，大小写不匹配会出错</li>
+</ol>
+<h2>插入</h2>
+<pre><code>userInfo := &amp;UserInfo{
+    UserId: 1,
+    Name:   &quot;name1&quot;,
+    Sex:    1,
+}
+
+// 执行添加数据操作，但是未返回添加结果信息
+result := db.Create(userInfo)
+if result.Error != nil {
+    fmt.Println(&quot;insert异常，错误信息:&quot;, result.Error.Error())
+    return
+}
+
+if result.RowsAffected &lt;= 0 {
+    fmt.Println(&quot;insert成功，但未影响任何行&quot;)
+} else {
+    fmt.Println(&quot;insert成功，影响记录数:&quot;, result.RowsAffected)
+}
+</code></pre>
+
+<h2>更新</h2>
+<pre><code>userInfo := &amp;UserInfo{
+    UserId: 1,
+    Name:   &quot;name0&quot;,
+    Sex:    0,
+}
+
+// result := db.Model(userInfo).Update(&quot;Name&quot;) // 更新指定字段
+/*
+    result := db.Model(userInfo).Updates(map[string]interface{}{
+    &quot;UserId&quot;: &quot;1&quot;,
+    &quot;Name&quot;:   &quot;name3&quot;}) // 使用字典更新
+*/
+
+/*
+    result := db.Model(userInfo).Select(&quot;Name&quot;).Updates(map[string]interface{}{
+        &quot;UserId&quot;: &quot;1&quot;,
+        &quot;Name&quot;:   &quot;name3&quot;}) // 更新选择字段
+*/
+/*
+    result := db.Model(userInfo).Omt(&quot;Name&quot;).Updates(map[string]interface{}{
+        &quot;UserId&quot;: &quot;1&quot;,
+        &quot;Name&quot;:   &quot;name3&quot;}) // 更新除了Name的所有字段
+*/
+/*
+    result := db.Model(userInfo).
+    Where(&quot;UserId=?&quot;, userInfo.UserId).
+    UpdateColumn(&quot;Name=?&quot;, userInfo.Name) // 完全自定义更新
+*/
+
+result := db.Save(userInfo) // 更新所有字段
+if result.Error != nil {
+    fmt.Println(&quot;update异常，错误信息:&quot;, result.Error.Error())
+    return
+}
+
+if result.RowsAffected &lt;= 0 {
+    fmt.Println(&quot;update成功，但未影响任何行&quot;)
+} else {
+    fmt.Println(&quot;update成功，影响记录数:&quot;, result.RowsAffected)
+}
+</code></pre>
+
+<h2>删除</h2>
+<pre><code>userInfo := &amp;UserInfo{
+    UserId: 1,
+    Name:   &quot;name0&quot;,
+    Sex:    0,
+}
+
+result := db.Delete(userInfo) // 会自动加上主键的值作为删除条件
+// result := db.Table(&quot;p_user_info&quot;).Where(&quot;UserId = ?&quot;, userInfo.UserId).Delete() //自定义删除
+if result.Error != nil {
+    fmt.Println(&quot;Delete异常，错误信息:&quot;, result.Error.Error())
+    return
+}
+
+if result.RowsAffected &lt;= 0 {
+    fmt.Println(&quot;Delete成功，但未影响任何行&quot;)
+} else {
+    fmt.Println(&quot;Delete成功，影响记录数:&quot;, result.RowsAffected)
+}
+</code></pre>
+
+<h2>总结</h2>
+<p><strong>优点</strong></p>
+<ol>
+<li>对表结构的调整具有良好的支持</li>
+<li>每次基于gorm.DB的调用均是返回的新的gorm.Scope，这使得每次接口调用均是协程安全的</li>
+</ol>
+<p><strong>存在问题</strong></p>
+<ol>
+<li>数据库字段名是按照蛇形命名，暂时发现只能通过tag标签调整，而且要求大小写完全匹配</li>
+<li>如果把数值字段设置为主键，会主动加上自增，暂未找到办法去除</li>
+<li>表名调整是全局的，无法迎合现在gameserver对表名调整的需求</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
