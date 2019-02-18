@@ -339,8 +339,14 @@ sync_relay_log_info=10000
 # loose_mysqlx_port=33060
 	````
 * 初始化Mysql本地实例:``mysqld --defaults-file="C:/Programe Files/Mysql5.7/my.ini" --initialize --console``
+此时会生成一个root的密码，请注意记录
 * 创建一个名为"Mysql_test"的本地服务:``mysqld install Mysql_test``
 * 启动服务Mysql_test：``net start Mysql_test``
+* 测试连接:``mysql -hlocalhost -P3308 -uroot -p``
+* 修改密码:``ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';``
+* 设置root可以远程连接:``use mysql; update user set host = ’%’ where user = ’root’;``
+* 授权启用远程的所有权限：``use mysql;grant all privileges  on *.* to root@'%' identified by "远程连接时使用的密码";``
+* 刷新权限，以便启用修改后的密码:``flush privileges;``
 
 相关说明：
 * 如果需要安装多个Mysql服务，则把程序复制多份，并修改配置文件mysql.ini即可
