@@ -17,7 +17,7 @@ protocol buffer教程
 		//注意proto3与proto2的写法有些不同
 		syntax = "proto3";
 		 
-		//包名，通过protoc生成时go文件时
+		//包名，通过protoc生成时go文件时，这个会直接变成包名
 		package test;
 		 
 		//手机类型

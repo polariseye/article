@@ -14,13 +14,13 @@ defer用于注册延时调用方法，在return的前一刻以先进后出的方
     	i = i + 1
     }
 
-官方原句如下：
+defer的官方描述
 > Each time a “defer” statement executes, the function value and parameters to the call are evaluated as usual and saved anew but the actual function is not invoked. Instead, deferred functions are invoked immediately before the surrounding function returns, in the reverse order they were deferred. If a deferred function value evaluates to nil, execution panics when the function is invoked, not when the “defer” statement is executed.
 
 中文翻译
 > 每当defer执行时，函数和函数参数值都将被保存到一个堆栈中，但函数实际上并没有被调用。而是在对应函数返回那一刻以先进后出的方式被调用。如果函数是一个nil指针，则在被调用时panic，而不是在defer定义的地方执行。
 
-具体如下:
+也就是说:
 1. defer只在函数调用结束之际执行
 2. defer仍然可以更改函数调用的返回值
 3. defer语句会把函数与相关参数值入栈，所以会有一定的性能损耗，相当于值传递
@@ -66,7 +66,7 @@ defer用于注册延时调用方法，在return的前一刻以先进后出的方
 	直接调用: 2
 	defer: 1
 
-defer可以理解为执行在了return和函数调用结束之间。比如:``return 1``实际被拆分成了
+defer可以理解为执行在return和函数调用结束之间。比如:``return 1``实际被拆分成了
 
 	1. 返回值 = 1
 	2. 调用defer函数
@@ -80,10 +80,11 @@ defer其他说明:
 recover用于捕获panic，以便在出现不可逆错误时，能够做一些善后工作。但使用中有一些具体要求：
 
 1. recover只能用在defer语句中
-2. 不能直接``defer recover()``，如果真这么干了，则这句话就相当于没有执行样，不会起任何作用。
-3. recover只能出现在defer的函数调用中，不能在嵌套中调用
+2. 不能直接``defer recover()``，如果真这么干了，则这句话就相当于没有执行，不会起任何作用。
+3. recover只能出现在defer的函数调用中，嵌套中调用不会有任何效果
 
 示例1：
+
 	package main
 	
 	func main() {
@@ -99,7 +100,7 @@ recover用于捕获panic，以便在出现不可逆错误时，能够做一些�
 		panic("add")
 	}
 
-这个不会输出``调用成功``，而是直接panic了。如果Hello函数内没有panic,则不会出任何问题,具体输出为：
+这个不会输出``调用成功``，而是直接panic了。如果Hello函数内没有panic,则程序正常执行不会抛错,具体输出为：
 
 	退出了
 	panic: add'
@@ -132,7 +133,7 @@ recover用于捕获panic，以便在出现不可逆错误时，能够做一些�
 		panic("add")
 	}
 
-这个是完全正常的使用，所以最后会输出``调用成功``,具体输出内容为:
+这个是正常普通的使用，所以最后会输出``调用成功``,具体输出内容为:
 
 	捕获到panic: add
 	退出了
