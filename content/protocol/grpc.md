@@ -300,6 +300,7 @@ grpc定义使用的protobuf语法，相关具体语法可参考protobuf相关文
 
 1. 相比传统基于HTTP/1的restful api，确实效率高了很多。但毕竟是HTTP，没办法和裸的TCP相比
 2. 可以把Grpc当做是底层链路和协议解析，基于双向stream实现上层的具体映射。这在HTTP的大环境下堪比websocket。 大概定义如下:
+
 		 message Request {
 			int MethodId = 1;
 			repeated byte RequestData = 2; ////消息的具体字节数组
