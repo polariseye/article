@@ -36,3 +36,7 @@ ET中的数据存储
 * [游戏服务器的数据保存](https://blog.csdn.net/codeandmore/article/details/51219855)
 * [游戏服务器中的数据库异步操作技术和游戏数据的保存机制
 ](https://gameinstitute.qq.com/community/detail/110133)
+* [游戏服务器使用MongoDB作为数据库，还有必要使用Redis缓存吗？](https://www.zhihu.com/question/29775064)
+* [游戏数据库选型mysql,mongo, redis, memcached](http://www.cppblog.com/sunicdavy/archive/2015/06/19/210992.html)
+* [谈谈陌陌争霸在数据库方面踩过的坑( Redis 篇)](https://blog.codingnow.com/2014/03/mmzb_redis.html)
+* [社交游戏使用NoSQL数据库的4个理由](http://gamerboom.com/archives/58617)
