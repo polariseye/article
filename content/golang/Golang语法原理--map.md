@@ -1,5 +1,8 @@
-为了你好难事苦事我做了--map语法详解
+为了你好难事苦事我做了-- map语法详解
 ----------------------------
+![](img/mapshixianweizhi.png)
+
+map实现在`runtime`包 实现代码位置:runtime/map.go
 
 # 参考资料
 
