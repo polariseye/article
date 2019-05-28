@@ -76,14 +76,15 @@ exception CustException{
 }
 
 service HelloworldService{
-	string Hi(1:string name) throws CustException; //// 使用关键字throws指定要抛出的异常
+	string Hi(1:string name) throws (CustException e1), //// 使用关键字throws指定要抛出的异常
 }
 ````
 
 # 服务(service)
 ````
 service HelloworldService {
-	string Hello(1: string name);
+	string Hello(1: string name),
+	string Hello2(1: string name)
 }
 ````
 
