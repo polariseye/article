@@ -57,9 +57,9 @@ package dbServer;
   * 枚举类常量建议多使用类型别名来处理
 
 * 普通常量应该遵循以下原则 
-  * 建议以`con_`开头，以便能够比较方便找到常量定义，也能够更好地利用代码智能提示功能
+  * 以`cst_`开头，以便能够比较方便找到常量定义，也能够更好地利用代码智能提示功能
 
-  * 建议合理使用`const`块的形式，这可以使代码更整洁
+  * 【建议】合理使用`const`块的形式，这可以使代码更整洁
 
 示例:
 ````
@@ -82,7 +82,7 @@ const (
 
 * 多个变量同时定义时，建议使用`var`块进行定义
 
-* slice或数组建议使用List结尾, map使用Data结尾，chancel使用Ch或Chan结尾，struct实例可以使用Obj结尾或者不用后缀,函数型变量应该以Func结尾
+* 【建议】slice或数组建议使用List结尾, map使用Data结尾，chancel使用Ch或Chan结尾，struct实例可以使用Obj结尾或者不用后缀,函数型变量应该以Func结尾
 
 * 重要变量应该加上对应注释，以便能清晰明白其使用目的 
 
@@ -131,11 +131,11 @@ func HelloWorld(name string){
 
 * 相对独立的程序块应该用空行进行隔开，而逻辑紧密相关的代码则放在一起，以便逻辑更加清晰
 
-* 函数返回值的顺序应该是:需要的返回数据,exist，error，这样有助于把重点放在需要的数据上。比如:`func getPlayerInfo(key string)(data *PlayerInfo,exist bool,err error)`
+* 【建议】函数返回值的顺序应该是:需要的返回数据,exist，error，这样有助于把重点放在需要的数据上。比如:`func getPlayerInfo(key string)(data *PlayerInfo,exist bool,err error)`
 
-* 如果返回值个数超过3个，应该需要考虑是否封装为一个返回的结构体  
+* 【建议】如果返回值个数超过3个，应该需要考虑是否封装为一个返回的结构体  
 
-* 函数返回语句和其他逻辑之间建议添加一个空行 
+* 【建议】函数返回语句和其他逻辑之间建议添加一个空行 
 
 示例:
 ````
@@ -194,7 +194,7 @@ func getHeroSkills(key string, heroIdxList []int32) (addBeSkills []*TAddBeSkillI
 
 * 以骆驼峰命名规则命名，首字母根据访问权限确定大小写，如果包外不需要访问请用小写开头的函数
 
-* 建议使用字母`I`开头 
+* 【建议】建议使用字母`I`开头 
 
 ## 关于 error ##
 

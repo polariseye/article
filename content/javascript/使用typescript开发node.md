@@ -9,11 +9,16 @@
 1. 安装typescript环境
 `` npm install -g typescript``
 
-3. 添加node的提示和支持。（经过对比，发现typings的代码版本非常老，所以采用此方式）
+2. 添加node的提示和支持。（经过对比，发现typings的代码版本非常老，所以采用此方式）
 ``npm install --save @types/node``
 ``npm install --save @types/electron``
 
+备注：
+ * 如果下载很慢，可以使用淘宝的镜像:`--registry=https://registry.npm.taobao.org`
+ * 使用命令`tsc`查看是否可用，如果不可用则把目录`%NODEJSPATH%/nodejs/node_global`加入到环境变量
+
 # 项目初始化
+
 1. 初始化npm环境
 ``npm init`` 
 执行此命令后，就会在项目目录下面创建一个名为package.json文件，用于配置包相关信息
@@ -57,3 +62,37 @@
   ]
 }
 ````
+# 编码
+
+````
+// index.ts
+let uName : string ="nihao"
+console.log("hi--",uName)
+````
+# 项目编译
+1. typescript代码转换为js代码：`tsc index.ts`
+2. 执行：`node index.js`，考虑到方便，可以反此行配置在`package.json`文件中,然后使用命令:'npm start'执行：
+
+```
+{
+  "name": "jsonlog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc main.ts&&electron index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "5.0.8"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.30",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1"
+  }
+}
+
+```
