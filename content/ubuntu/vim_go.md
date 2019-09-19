@@ -197,6 +197,19 @@ go build
   ./install.py --go-completer
   ````
 
+* **vim中回退键使用无效**
+
+  **原因**：
+
+  这是因为安装vim插件管理工具`ycm`导致的
+
+  **解决办法**:
+ 
+  在`~/.vimrc`中添加一行配置即可解决
+  ````
+  set backspace=indent,eol,start
+  ````
+
 # 参考资料
 * [CentOS7解决YouCompleteMe对Python的依赖](https://blog.csdn.net/uu203/article/details/82621523)
 * [vim打造成golang的IDE](https://blog.csdn.net/qq_35976351/article/details/88992931)
