@@ -12,6 +12,7 @@ protocol buffer教程
 3. 下载依赖库[protobuf](https://github.com/golang/protobuf)，生成的代码会直接引用这个库
 
 4. 编写proto脚本
+
 		// 文件：tmp.proto
 		//指定版本
 		//注意proto3与proto2的写法有些不同
@@ -120,6 +121,9 @@ proto文件定义：
 参考文档：
 
 * [Protobuf3语言指南](http://blog.csdn.net/u011518120/article/details/54604615#DefiningAMessageType)
+
+重要说明:
+ 1. protobuf的序号只能从1开始
 
 ## protocol buffer内部原理
 参考文档:

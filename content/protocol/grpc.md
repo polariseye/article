@@ -48,16 +48,17 @@ grpc定义使用的protobuf语法，相关具体语法可参考protobuf相关文
 2. ``returns`` 用于指定返回值，**所有函数必须指定返回值，否则会编译不过**
 3. 如果需要流式传输，则使用``stream``关键字修饰，标记为流式传输后，可以传输多个对象。由于这个关键字，所以把流传输分成了三种：
 	* 服务端流式 RPC，即客户端发送一个请求给服务端，可获取一个数据流用来读取一系列消息。客户端从返回的数据流里一直读取直到没有更多消息为止
-			rpc GetList() return (stream Person) {}
+			rpc GetList() returns (stream Person) {}
 	* 客户端流式 RPC，即客户端用提供的一个数据流写入并发送一系列消息给服务端。一旦客户端完成消息写入，就等待服务端读取这些消息并返回应答
-			rpc UpdateList(stream Person) return (ReturnVal) {}
+			rpc UpdateList(stream Person) returns (ReturnVal) {}
 	* 双向流式 RPC，即两边都可以分别通过一个读写数据流来发送一系列消息。这两个数据流操作是相互独立的，所以客户端和服务端能按其希望的任意顺序读写。**可以在不同的协程分别操作这两个流**
-			rpc ExChange(stream Person) return (stream ReturnVal) {}
+			rpc ExChange(stream Person) returns (stream ReturnVal) {}
 
 重要说明
 1. 所有函数必须有返回值，否则会编译不过
 2. rpc涉及到的所有类型必须为message定义的类型，不能是基本数据类型，否则会提示对应类型不无法识别
 3. 不能有函数重载，所有函数名都不能一样
+4. 函数参数和返回值都不能指定名字，否则会编译不过
 
 关于protobuf的其他语法，请见文档[protobuf use](./protobuf use.md)
 
