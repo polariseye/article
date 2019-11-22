@@ -150,3 +150,58 @@ disabled
 [root@localhost ~]# systemctl is-enabled crond.service
 enabled
 ````
+参考资料
+* [CentOS7 配置kafka为服务](https://blog.csdn.net/yeshengming2/article/details/88848071)
+
+# 防火墙配置
+* 查看firewall服务状态
+````
+systemctl status firewalld
+````
+* 查看firewall服务状态
+````
+firewall-cmd --state
+````
+* firewall服务管理
+````
+# 开启
+service firewalld start
+# 重启
+service firewalld restart
+# 关闭
+service firewalld stop
+````
+* 查看防火墙规则
+````
+firewall-cmd --list-all 
+````
+* 查询，开放，关闭端口
+````
+	# 查询端口是否开放
+	firewall-cmd --query-port=8080/tcp
+	# 开放80端口
+	firewall-cmd --permanent --add-port=80/tcp
+	# 移除端口
+	firewall-cmd --permanent --remove-port=8080/tcp
+	
+	#重启防火墙(修改配置后要重启防火墙)
+	firewall-cmd --reload
+	
+	# 参数解释
+	1、firwall-cmd：是Linux提供的操作firewall的一个工具；
+	2、--permanent：表示设置为持久；
+	3、--add-port：标识添加的端口；
+````
+
+# 其他问题解决
+* **安装的minial版本的centos,不能使用ifconfig与netstat**
+````
+yum install net-tools
+````
+* 才安装完成后没有自动分配IP
+````
+# 重新分配IP
+dhclient
+# 开机自启动
+systemctl enable network.service
+````
