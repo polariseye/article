@@ -106,3 +106,47 @@ fdisk -l
 
 详细参见资料:
 * [linux 磁盘挂载及查看磁盘](https://www.cnblogs.com/mangoVic/p/7161548.html)
+
+## 服务管理
+* 启动服务
+```
+systemctl start kafka
+```
+
+* **手动添加服务(以kafka.service为例)**
+	1. 添加文件:/lib/systemd/system/kafka.service 内容如下:
+````
+	[Unit]
+	Description=kafka
+	After=network.target remote-fs.target nss-lookup.target zookeeper.service
+	 
+	[Service]
+	Type=forking
+	Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/jdk1.8.0_201/bin"
+	ExecStart=/usr/local/kafka_2.12-2.1.1/bin/kafka-server-start.sh -daemon /usr/local/kafka_2.12-2.1.1/config/server.properties
+	ExecReload=/bin/kill -s HUP $MAINPID
+	ExecStop=/usr/local/kafka_2.12-2.1.1/bin/kafka-server-stop.sh
+	PrivateTmp=true
+	 
+	[Install]
+	WantedBy=multi-user.target
+````
+	2. 刷新配置: ``sudo systemctl daemon-reload``
+	3. 启动服务
+````
+#启动
+systemctl start kafka
+#查看状态
+systemctl status kafka -l
+#停止
+systemctl stop kafka
+````
+
+* 设置服务自启动(以服务kafka.service为例)
+````
+[root@localhost ~]# systemctl is-enabled kafka.service
+disabled
+[root@localhost ~]# systemctl enable crond.service
+[root@localhost ~]# systemctl is-enabled crond.service
+enabled
+````
