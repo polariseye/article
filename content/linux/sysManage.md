@@ -4,15 +4,6 @@ date: 2017-08-14 09:58:11
 draft: true
 ---
 
-系统管理
-------------------
-
-# 环境变量配置
-
-环境变量配置均使用```export 要设置打环境变量```
-
-使修改立即生效：source 配置文件名
-
 ## 系统环境配置
 
 /etc/profile: 每个用户第一次登录时，执行
@@ -27,7 +18,7 @@ draft: true
 
 ~/.bash_logout:用户登出时，执行此文件
  
-# 软件管理
+# 软件管理(ubuntu)
 
 * 下载安装软件 apt-get install <软件名>
 * 更新软件源列表 apt-get update
@@ -90,7 +81,7 @@ sudo blkid -s TYPE
 ```
 
 7. 显示所有设备：
-```
+````
 sudo blkid -o device
 ````
 
@@ -191,6 +182,11 @@ firewall-cmd --list-all
 	1、firwall-cmd：是Linux提供的操作firewall的一个工具；
 	2、--permanent：表示设置为持久；
 	3、--add-port：标识添加的端口；
+````
+# 网络相关
+* 系统端口占用查看：
+````
+netstat -tunlp
 ````
 
 # 其他问题解决
