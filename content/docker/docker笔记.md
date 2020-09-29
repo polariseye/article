@@ -100,9 +100,10 @@ FROM 基于的哪个镜像
 ## docker容器升级
 
 ## 相关其他指令
-* cat /etc/os-release :查看系统版本信息
-* uname -a:查看系统内核的版本信息
-* cat /proc/version:查看当前系统内核的版本信息
+* `cat /etc/os-release` :查看系统版本信息
+* `uname -a`:查看系统内核的版本信息
+* `cat /proc/version`:查看当前系统内核的版本信息
+* `docker ps -a --no-trunc` :查看容器列表详细信息，显示内容不截取，包含完整的command命令信息
 
 ## 参考资料
 * [Docker容器的持久存储模式 ](http://dockone.io/article/1283)
