@@ -18,6 +18,7 @@ Docker笔记
 * docker run --volumes-from 数据容器名 镜像名:TAG 命名相关参数 以指定数据容器来运行
 * docker ps :查看当前有哪些容器进程
 * docker logs 容器Id/容器名:查看指定容器的标准输出
+* docker logs 容器名字或者 ID 2>&1 | grep xxx 。 `2>&1`代表 把标准错误（文件描述符2）重定向（>）到标准输出（文件描述符 1）的位置（&）
 * docker stop 容器Id/容器名: 停止容器
 * docker port 容器Id/容器名:查看指定容器的端口映射
 * docker top 容器Id/容器名:查看指定容器内部运行的进程
