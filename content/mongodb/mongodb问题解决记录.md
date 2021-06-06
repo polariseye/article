@@ -34,3 +34,19 @@ Sep 02 10:11:06 localhost.localdomain systemd[1]: mongod.service failed.
 1. 删除lock后缀的文件:`rm /data/mongodb/*.lock`
 2. 修复数据文件:`sudo mongod -f /etc/mongod.conf --repair`
 3. 手动启动mongod服务:`sudo mongod -f /etc/mongod.conf --fork`
+
+## mongoexport带查询导出数据
+````
+./mongoexport -host 127.0.0.1 -d test1 -c collection1 -q '{"_id":{"$oid":"60656ebe5b5dec0b638d3c7e"}}' -o a.json
+````
+说明:
+* `-q`指定查询条件，
+	* 需要使用单引号`'`把查询条件包裹起来
+	* 不能直接使用ObjectId，需要使用`$oid`来指定ObjectId
+* `-o` 指定本地导出的文件名
+
+## mongo脚本中对象转换为json字符串
+````
+var obj=db.collection1.find()
+JSON.stringify(obj)
+````
