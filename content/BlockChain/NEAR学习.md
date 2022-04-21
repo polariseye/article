@@ -49,7 +49,7 @@ near可以使用人类可读的帐户 ID 而不是公钥哈希。需要使用钱
 
 **[隐式账户](https://docs.near.org/docs/roles/integrator/implicit-accounts)**<br>
 资料参考地址:[https://docs.near.org/docs/roles/integrator/implicit-accounts](https://docs.near.org/docs/roles/integrator/implicit-accounts)<br>
-也可以使用隐式账户，隐式账户使用**ED25519**签名方法生成账户。地址使用base58进行编码
+也可以使用隐式账户，隐式账户使用**ED25519**签名方法生成账户。公钥信息存储使用base58进行编码。但是账户Id使用公钥的16进制编码作为账户地址
 * 它们允许您在创建帐户 ID 之前通过在本地生成 ED25519 密钥对来保留帐户 ID。
 * 此密钥对具有映射到帐户 ID 的公钥。
 * 帐户 ID 是公钥的小写十六进制表示。
