@@ -13,6 +13,8 @@ NEAR学习笔记
 nodejs开发包:[https://docs.near.org/docs/api/javascript-library](https://docs.near.org/docs/api/javascript-library)<br>
 接口文档:[https://docs.near.org/docs/api/rpc](https://docs.near.org/docs/api/rpc)
 
+其他区块链浏览器地址: [https://nearblocks.io/](https://testnet.nearblocks.io/) *这个网站提供的API可以作为NEAR官方API的补充* 
+
 **概要**<br>
 * 是一个对开发人员友好的,第一层，分片、股权证明的公共区块链
 * 采用分片设计的方式实现
