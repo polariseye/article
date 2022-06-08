@@ -189,6 +189,15 @@ firewall-cmd --list-all
 netstat -tunlp
 ````
 
+# VMware虚拟机管理
+* 与主机之间共享文件夹
+````
+# 查看当前已经共享的目录
+vmware-hgfsclient
+# 挂载所有共享到hgfs目录
+vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+````
+
 # 其他问题解决
 * **安装的minial版本的centos,不能使用ifconfig与netstat**
 ````
