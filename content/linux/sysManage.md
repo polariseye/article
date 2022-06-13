@@ -203,6 +203,11 @@ vmware-hgfsclient
 # 挂载所有共享到hgfs目录
 vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
 ````
+* ubuntu无法自适应窗口的解决方案
+````
+第一步： sudo apt-get autoremove open-vm-tools
+第二步：sudo apt-get install open-vm-tools-desktop
+````
 
 # 其他问题解决
 * **安装的minial版本的centos,不能使用ifconfig与netstat**
