@@ -20,3 +20,16 @@ cargo ndk 问题解决笔记
 	ln -s /usr/local/android-ndk-r23c/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/12.0.9/lib/linux/arm/libuunwind.a /usr/local/android-ndk-r23c/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/12.0.9/lib/linux/arm/libgcc.a
   ````
 
+* 使用flutter_rust_bridge_codegen 提示:`ffigen could not find LLVM.`
+  是由于未识别到llvm或未找到clang.so文件。指定llvm_path需包含NDK相关目录:
+````
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64'
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/bin'
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/include'
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/lib'
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/lib64'
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/libexec'
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/share'
+ - '/usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/lib64/libclang.so'
+````
+另外，由于clang默认名字为:`libclang.so.13`，所以需要添加一个到libclang.so的软链接:`ln -s /usr/local/android-ndk-r24/toolchains/llvm/prebuilt/linux-x86_64/lib64/libclang.so.13 libclang.so`

@@ -22,6 +22,15 @@ llvm源码编译笔记
 原因: 是由于项目在windows下clone导致。<br>
 解决办法:删除附.git目录外的所有文件，然后在linux下执行:`git checkout .`<br>
 
+#通过其他源安装llvm
+* 添加源: `yum -y install epel-release`
+* 更新源: `yum -y update`
+* 清理:`yum clean all`
+* 缓存:`yum makecache`
+* 查看存在的llvm版本:`yum list *llvm*`
+* 下载:`yum install llvm11`
+
+
 # 参考资料
 * [llvm官网](http://llvm.org/)
 * [llvm-project](https://github.com/llvm/llvm-project)
