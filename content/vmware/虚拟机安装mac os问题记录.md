@@ -32,3 +32,8 @@ mouse.vusb.enable = "TRUE"
 
 参考文档: [https://blog.csdn.net/zhoupian/article/details/122659135](https://blog.csdn.net/zhoupian/article/details/122659135)<br>
 把虚拟机USB输入设备更改为USB2.0
+
+**虚拟机无法联网**
+
+将 ethernet0.virtualDev = “e1000e”
+改为 ethernet0.virtualDev = “vmxnet3”
